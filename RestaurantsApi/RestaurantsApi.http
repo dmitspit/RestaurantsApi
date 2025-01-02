@@ -1,0 +1,10 @@
+@host = http://localhost;
+@port = 7137;
+
+@RestaurantsApi_HostAddress = http://localhost:5175
+
+GET 
+
+GET {{RestaurantsApi_HostAddress}}/api/restaurants
+
+###
