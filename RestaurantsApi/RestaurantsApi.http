@@ -8,3 +8,21 @@ GET
 GET {{RestaurantsApi_HostAddress}}/api/restaurants
 
 ###
+
+POST
+
+POST {{RestaurantsApi_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Spicy Delights",
+  "description": "Cool culinary",
+  "category": "Fine dining",
+  "hasDelivery": true,
+  "contactEmail": "test@test.com",
+  "contactNumber": "443-325-212",
+  "city": "Rome",
+  "street": "Castro Pretorio",
+  "postalCode": "321312"
+}
+

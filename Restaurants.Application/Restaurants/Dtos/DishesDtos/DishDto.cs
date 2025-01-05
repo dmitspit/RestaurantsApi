@@ -1,4 +1,4 @@
-﻿namespace Restaurants.Application.Restaurants.Dtos
+﻿namespace Restaurants.Application.Restaurants.Dtos.DishesDtos
 {
     public class DishDto
     {
