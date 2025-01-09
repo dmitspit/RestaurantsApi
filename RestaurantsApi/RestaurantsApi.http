@@ -26,3 +26,15 @@ Content-Type: application/json
   "postalCode": "321312"
 }
 
+###
+
+PATCH
+
+PATCH {{RestaurantsApi_HostAddress}}/api/restaurants/3
+Content-Type: application/json
+
+{
+  "name": "Sample patch",
+  "description": "Test desc",
+  "hasDelivery": false
+}
