@@ -7,9 +7,9 @@ using Restaurants.Domain.Repositories;
 namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant
 {
     public class DeleteRestaurantCommandHandler(ILogger<DeleteRestaurantCommandHandler> logger, IRestaurantRepository restaurantRepository)
-        : IRequestHandler<DeleteRestaurantCommand, bool>
+        : IRequestHandler<DeleteRestaurantCommand>
     {
-        public async Task<bool> Handle(DeleteRestaurantCommand request, CancellationToken cancellationToken)
+        public async Task Handle(DeleteRestaurantCommand request, CancellationToken cancellationToken)
         {
             logger.LogInformation($"Delete restaurant {request.Id}");
 
@@ -17,12 +17,10 @@ namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant
 
             if (restaurant == null)
             {
-                throw new NotFoundException($"Restaurant {request.Id} does not exist");
+                throw new NotFoundException("Restaurant", request.Id.ToString());
             }
 
             await restaurantRepository.Delete(restaurant);
-
-            return true;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
 
             if (restaurant == null)
             {
-                throw new NotFoundException($"Restaurant {request.Id} does not exist");
+                throw new NotFoundException("Restaurant", request.Id.ToString());
             }
 
             mapper.Map(request, restaurant);

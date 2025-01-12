@@ -18,7 +18,7 @@ namespace Restaurants.Application.Restaurants.Queries.GetRestaurantById
         {
             logger.LogInformation($"Get restaurant {request.Id}");
             Restaurant restaurant = await restaurantRepository.GetByIdAsync(request.Id)
-            ?? throw new NotFoundException($"Restaurant {request.Id} does not exist");
+            ?? throw new NotFoundException("Restaurant", request.Id.ToString());
 
             return mapper.Map<RestaurantDto>(restaurant);
         }
