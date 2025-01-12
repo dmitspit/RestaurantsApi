@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
+using Restaurants.Application.Restaurants.Dtos.RestaurantDtos;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 
@@ -24,28 +25,19 @@ namespace RestaurantsApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var restaurants = await mediator.Send(new GetRestaurantByIdQuery(id));
-
-            if (restaurants is null)
-            {
-                return NotFound();
-            }
+            RestaurantDto restaurants = await mediator.Send(new GetRestaurantByIdQuery(id));
 
             return Ok(restaurants);
         }
 
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteRestaurant([FromRoute] int id)
         {
-            var isDeleted = await mediator.Send(new DeleteRestaurantCommand(id));
-
-            if (isDeleted)
-            {
-                return NoContent();
-            }
-
-            return NotFound();
+            await mediator.Send(new DeleteRestaurantCommand(id));
+            return NoContent();
         }
 
         [HttpPatch("{id}")]
@@ -53,12 +45,7 @@ namespace RestaurantsApi.Controllers
         {
             command.Id = id;
 
-            var isUpdated = await mediator.Send(command);
-
-            if (isUpdated)
-            {
-                return NoContent();
-            }
+            await mediator.Send(command);
 
             return NotFound();
         }
