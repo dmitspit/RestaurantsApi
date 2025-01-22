@@ -3,6 +3,8 @@ using FluentValidation.AspNetCore;
 
 using Microsoft.Extensions.DependencyInjection;
 
+using System.Reflection;
+
 namespace Restaurants.Application.Extensions
 {
     public static class ServiceCollectionExtensions
@@ -10,7 +12,7 @@ namespace Restaurants.Application.Extensions
         public static void AddApplication(this IServiceCollection services)
         {
 
-            var applicationAssembly = typeof(ServiceCollectionExtensions).Assembly;
+            Assembly applicationAssembly = typeof(ServiceCollectionExtensions).Assembly;
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));
 

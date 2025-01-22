@@ -28,6 +28,22 @@ Content-Type: application/json
 
 ###
 
+###
+
+POST
+
+POST {{RestaurantsApi_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+  "Name": "Carbonara",
+  "Description": "Carbonara is a pasta dish made with fatty cured pork, hard cheese, eggs, salt, and black pepper",
+  "Price": 10,
+  "KiloCalories": 100
+}
+
+###
+
 PATCH
 
 PATCH {{RestaurantsApi_HostAddress}}/api/restaurants/3

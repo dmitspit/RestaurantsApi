@@ -4,7 +4,7 @@ using MediatR;
 
 using Microsoft.Extensions.Logging;
 
-using Restaurants.Application.Restaurants.Dtos.RestaurantDtos;
+using Restaurants.Application.Restaurants.Dtos;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
 

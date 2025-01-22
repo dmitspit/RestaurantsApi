@@ -1,6 +1,6 @@
-﻿using Restaurants.Application.Restaurants.Dtos.DishesDtos;
+﻿using Restaurants.Application.Dishes.Dtos;
 
-namespace Restaurants.Application.Restaurants.Dtos.RestaurantDtos
+namespace Restaurants.Application.Restaurants.Dtos
 {
     public class RestaurantDto
     {
